@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
-
+assets/
+.vscode/
 # Compiled Object files
 *.slo
 *.lo
@@ -10,6 +11,7 @@
 # Precompiled Headers
 *.gch
 *.pch
+*.txt
 
 # Compiled Dynamic libraries
 *.so
@@ -29,4 +31,5 @@
 # Executables
 *.exe
 *.out
+*.o
 *.app

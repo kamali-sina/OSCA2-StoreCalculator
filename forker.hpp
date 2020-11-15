@@ -9,7 +9,7 @@
 #include <fcntl.h> 
 
 #define NAMEDPIPE "./namedpipes/"
-
+#define MAXDEPTH 2
 using namespace std;
 
 int fork_main(string line, string asset_dir);

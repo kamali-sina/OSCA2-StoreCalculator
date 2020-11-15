@@ -1,5 +1,8 @@
 #include "parser.hpp"
 
+/* 
+returns a vector of all files and folders in a given path
+*/
 vector<string> get_items_in_folder(string path){
     vector<string> result;
     DIR *dir;
@@ -18,6 +21,9 @@ vector<string> get_items_in_folder(string path){
     return result;
 }
 
+/* 
+converts YYYY/MM/DD format to an int
+*/
 int date_to_timestamp(string date){
     date.erase(remove(date.begin(), date.end(), '/'), date.end());
     return stoi(date);
@@ -39,6 +45,9 @@ vector<int> parse_csv_line(string line, char split_by){
     return result;
 }
 
+/* 
+splits a string bu the given char
+*/
 vector<string> parse_line(string line, char split_by){
     vector<string> result;
     stringstream line_stream(line);
@@ -63,6 +72,9 @@ vector<vector<int>> parse_file(string path){
     return table;
 }
 
+/* 
+replaces a char called orig in the string by replace
+*/
 string replace_char(string line,char replace, char orig){
     for (int i = 0; i < line.length(); i++){
         if (line[i] == orig){

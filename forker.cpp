@@ -86,10 +86,11 @@ int do_op(string line){
     return 0;
 }
 
+/* 
+line is a coded string of command|cur_path
+count is used for the recursive handling of the code
+*/
 int forker(string line, int count){
-    /* 
-    
-    */
     vector<string> dupped_message = parse_line(line, '|');
     vector<string> folders = get_items_in_folder(dupped_message[1]);
     vector<int> results;
@@ -108,7 +109,7 @@ int forker(string line, int count){
             char baboole[200];
             read(pipefd[0], &baboole, 200);
             string message = baboole;
-            if (count > 1)
+            if (count >= MAXDEPTH)
                 do_op(message);
             else
                 forker(message, count+1);
@@ -129,6 +130,11 @@ int forker(string line, int count){
     return 0;
 }
 
+/* 
+used for forking the main process to handle a command.
+line is the command
+asset_dir is the path to the asset directory
+*/
 int fork_main(string line, string asset_dir){
     int result = -1;
     int state;
